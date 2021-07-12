@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通函数
+        function func() {
+            return 100;
+        }
+        console.log(func());//执行函数
+
+        // 函数表达式
+        const fun = function() {
+            return 100;
+        }
+        console.log(fun());
+        //函数表达式改写成箭头函数
+        const funa = () => 100;
+        console.log(funa());
+        
+        /*
+        // 箭头函数语法
+        ()中定义参数，如果只有一个参数，可以不写括号，也就是
+        const fun = (item) => {return 100;} <=======>   const fun = item => {return 100;}
+        {}中写函数体，也就是逻辑代码，如果函数体中只有返回值，可以不写return，也就是
+        const fun = item => {return 100;} <========> const fun = item => 100;
+        */
+       let obj = {
+           name:"泰戈尔",
+           age: 24,
+           sayName(){
+               console.log(`我的名字叫${this.name}`);//es6写法
+               console.log("我的名字叫" + this.name);//es6之前的写法
+               setTimeout(function(){
+                   console.log("我的名字叫" + this.name);//这里的this指向window。
+               },500),
+               setTimeout(()=>{
+                   console.log("我的名字叫" + this.name);//这里的this指向外部的被定义的函数。
+               },800)
+            }
+       }
+       obj.sayName();
+       /*
+       箭头函数和普通函数的区别
+       1：this指向不同，
+       2：普通函数的this指向调用者。
+       2：箭头函数的this指向定义函数的地方
+       */
+    </script>
+</body>
+</html>
